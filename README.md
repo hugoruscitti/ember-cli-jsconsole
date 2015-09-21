@@ -1,9 +1,7 @@
 # ember-cli-jsconsole
 
-<p>A nice javascript console/repl as ember-addon.</p>
+A nice javascript console/repl as ember-addon.
 
-<p><a href='http://hugoruscitti.github.io/ember-cli-jsconsole/' target="_blank">Ver demo online</a></p>
+<a href='http://hugoruscitti.github.io/ember-cli-jsconsole/' target="_blank">Ver demo online</a>
 
-<p>
 ![](https://raw.githubusercontent.com/hugoruscitti/ember-cli-jsconsole/master/preview/image.png)
-</p>
