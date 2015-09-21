@@ -2,4 +2,4 @@
 
 A nice javascript console/repl as ember-addon.
 
-![](preview/image.png)
+![](https://raw.githubusercontent.com/hugoruscitti/ember-cli-jsconsole/master/preview/image.png)
