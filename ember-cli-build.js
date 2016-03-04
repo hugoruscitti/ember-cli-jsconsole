@@ -9,6 +9,10 @@ module.exports = function(defaults) {
   app.import("./bower_components/codemirror/lib/codemirror.css");
   app.import("./bower_components/codemirror/theme/eclipse.css");
   app.import("./bower_components/codemirror/lib/codemirror.js");
+  app.import("./bower_components/codemirror/addon/hint/javascript-hint.js");
+  app.import("./bower_components/codemirror/addon/hint/show-hint.css");
+  app.import("./bower_components/codemirror/addon/hint/show-hint.js");
+
   app.import("./bower_components/codemirror/mode/javascript/javascript.js");
 
   app.import("./bower_components/jsconsole/styles/console.css");
