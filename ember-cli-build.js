@@ -6,8 +6,6 @@ module.exports = function(defaults) {
 
   });
 
-  app.import("./vendor/jsconsole.js");
-
   app.import("./bower_components/codemirror/lib/codemirror.css");
   app.import("./bower_components/codemirror/theme/eclipse.css");
   app.import("./bower_components/codemirror/lib/codemirror.js");
