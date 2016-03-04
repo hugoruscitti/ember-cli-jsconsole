@@ -1,6 +1,7 @@
 {
   "name": "ember-cli-jsconsole",
   "version": "0.1.2",
+  "main": "index.js",
   "description": "The default blueprint for ember-cli addons.",
   "directories": {
     "doc": "doc",
