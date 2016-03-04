@@ -15,6 +15,7 @@
     "keyEvent",
     "triggerEvent",
     "find",
+    "Codemirror",
     "findWithAssert",
     "wait",
     "DS",
