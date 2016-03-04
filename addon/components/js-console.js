@@ -6,11 +6,11 @@ export default Ember.Component.extend({
   didInsertElement() {
     var elementId = this.$('#jsconsole-container')[0];
 
-    var console = new Console(elementId);
+    var jsconsole = new Console(elementId);
 
-    window['console'] = console;
+    window['jsconsole'] = jsconsole;
 
-    console.input.on("inputRead", function(cm, event) {
+    jsconsole.input.on("inputRead", function(cm, event) {
 
       if (!cm.state.completionActive && event.keyCode != 13) {
            CodeMirror.commands.autocomplete(cm, null, {completeSingle: false});
