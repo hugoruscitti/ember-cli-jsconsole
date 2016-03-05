@@ -339,9 +339,6 @@ var Console = (function(){
 }());
 
 
-
-
-
 window['console2'] = Console;
 
 
