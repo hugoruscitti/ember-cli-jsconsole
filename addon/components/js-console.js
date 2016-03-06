@@ -352,11 +352,29 @@ export default Ember.Component.extend({
 
     window['jsconsole'] = jsconsole;
 
-    jsconsole.input.on("inputRead", function(cm, event) {
+    var orig = CodeMirror.hint.javascript;
 
-      if (!cm.state.completionActive && event.keyCode != 13) {
-           CodeMirror.commands.autocomplete(cm, null, {completeSingle: false});
-       }
+    CodeMirror.hint.javascript = function(cm) {
+      var inner = orig(cm) || {from: cm.getCursor(), to: cm.getCursor(), list: []};
+      //inner.list.push("bozo");
+      //console.log(inner);
+      return inner;
+    };
+
+    jsconsole.input.on("inputRead", function(cm, event) {
+      var hasInsertText = (event.text[0] === " " ||
+                           event.text[0] === "(" ||
+                           event.text[0] === "=" ||
+                           event.text[0] === ";" ||
+                           event.text[0] === "\"" ||
+                           event.text[0] === "'" ||
+                           event.text[0] === "[" ||
+                           event.text[0] === "]" ||
+                           event.text[0] === ")");
+
+      if (!cm.state.completionActive && !hasInsertText) {
+        CodeMirror.commands.autocomplete(cm, null, {completeSingle: false});
+      }
 
     });
   }
