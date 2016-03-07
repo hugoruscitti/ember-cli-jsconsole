@@ -202,7 +202,16 @@ var Console = (function(){
         case "object":
         case "array":
           // Todo: pretty print object output
-          output.formatted = JSON.stringify(value);
+          try {
+            output.formatted = JSON.stringify(value);
+          } catch (e) {
+            try {
+              output.formatted = value.imprimir();
+            } catch (e) {
+              output.formatted = value.toString();
+            }
+
+          }
           break;
         case "error":
           output.formatted = value.message.trim();
