@@ -372,6 +372,16 @@ export default Ember.Component.extend({
 
     jsconsole.input.on("inputRead", function(cm, event) {
       var hasInsertText = (event.text[0] === " " ||
+                           event.text[0] === "0" ||
+                           event.text[0] === "1" ||
+                           event.text[0] === "2" ||
+                           event.text[0] === "3" ||
+                           event.text[0] === "4" ||
+                           event.text[0] === "5" ||
+                           event.text[0] === "6" ||
+                           event.text[0] === "7" ||
+                           event.text[0] === "8" ||
+                           event.text[0] === "9" ||
                            event.text[0] === "(" ||
                            event.text[0] === "=" ||
                            event.text[0] === ";" ||
