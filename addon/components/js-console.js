@@ -355,6 +355,11 @@ export default Ember.Component.extend({
     var jsconsole = new Console(elementId);
 
     var custom_autocomplete = this.get("autocomplete");
+    var eval_function = this.get("eval_function");
+
+    if (eval_function) {
+      jsconsole.evaluate = eval_function;
+    }
 
     function autocomplete_function(cm) {
       if (custom_autocomplete) {
@@ -365,6 +370,12 @@ export default Ember.Component.extend({
     }
 
     jsconsole.input.on("inputRead", function(cm, event) {
+
+      // fix: this values appear when i use a custom_eval funcion.
+      if (event.text.length == 2 && !event.text[0] && !event.text[1]) {
+        return ;
+      }
+
       var hasInsertText = (event.text[0] === " " ||
                            event.text[0] === "0" ||
                            event.text[0] === "1" ||

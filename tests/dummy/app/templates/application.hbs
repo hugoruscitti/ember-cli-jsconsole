@@ -16,11 +16,12 @@
 <p>This is a simple autocomplete, with variable names like <code>home</code> and
 <code>help</code>.</p>
 
+<pre>\{{js-console autocomplete=autocomplete}}</pre>
 
 {{js-console autocomplete=autocomplete}}
 
 <p>
-and, you neet to create a <code>autocomplete</code> function in your controller:
+and, you neet to create an <code>autocomplete</code> function in your controller:
 </p>
 
 <pre>import Ember from 'ember';
@@ -29,5 +30,36 @@ export default Ember.Controller.extend({
   autocomplete(cm) {
     //let currentWord = cm.getTokenAt(cm.getCursor()).string);
     return {list: ['home', 'help']};
+  }
+});</pre>
+
+
+<h3>Demo with custom eval function</h3>
+
+
+<pre>\{{js-console eval_function=my_eval}}</pre>
+
+{{js-console eval_function=my_eval}}
+
+<p>
+and, you neet to create a function in your controller:
+</p>
+
+<pre>import Ember from 'ember';
+
+export default Ember.Controller.extend({
+  my_eval(code) {
+    var out = {};
+
+    alert("Your code: " + code);
+
+    try {
+      out.completionValue = eval.call(null, code);
+    } catch(e) {
+      out.error = true;
+      out.completionValue = e;
+      out.recoverable = (e instanceof SyntaxError && e.message.match('^Unexpected (token|end)'));
+    }
+    return out;
   }
 });</pre>
