@@ -1,3 +1,18 @@
 #jsconsole-container {
   border: 1px solid gray;
 }
+
+body {
+  font-family: 'Droid Sans', sans-serif;
+}
+
+
+pre {
+  border: 1px solid lightgrey;
+  background-color: #EEEEEE;
+  padding: 10px;;
+}
+
+h3 {
+  padding-top: 1.5em;
+}

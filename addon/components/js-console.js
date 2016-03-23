@@ -348,27 +348,21 @@ var Console = (function(){
 }());
 
 
-window['console2'] = Console;
-
-
-
 export default Ember.Component.extend({
   layout: layout,
   didInsertElement() {
     var elementId = this.$('#jsconsole-container')[0];
-
     var jsconsole = new Console(elementId);
 
-    window['jsconsole'] = jsconsole;
+    var custom_autocomplete = this.get("autocomplete");
 
-    var orig = CodeMirror.hint.javascript;
-
-    CodeMirror.hint.javascript = function(cm) {
-      var inner = orig(cm) || {from: cm.getCursor(), to: cm.getCursor(), list: []};
-      //inner.list.push("bozo");
-      //console.log(inner);
-      return inner;
-    };
+    function autocomplete_function(cm) {
+      if (custom_autocomplete) {
+        return custom_autocomplete(cm);
+      } else {
+        return CodeMirror.hint.javascript(cm) || {from: cm.getCursor(), to: cm.getCursor(), list: []};
+      }
+    }
 
     jsconsole.input.on("inputRead", function(cm, event) {
       var hasInsertText = (event.text[0] === " " ||
@@ -392,7 +386,7 @@ export default Ember.Component.extend({
                            event.text[0] === ")");
 
       if (!cm.state.completionActive && !hasInsertText) {
-        CodeMirror.commands.autocomplete(cm, null, {completeSingle: false});
+        CodeMirror.showHint(cm, autocomplete_function, {completeSingle: false});
       }
 
     });

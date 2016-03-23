@@ -8,3 +8,26 @@
 <pre>\{{js-console}}</pre>
 
 {{js-console}}
+
+
+
+<h3>Demo with custom autocomplete</h3>
+
+<p>This is a simple autocomplete, with variable names like <code>home</code> and
+<code>help</code>.</p>
+
+
+{{js-console autocomplete=autocomplete}}
+
+<p>
+and, you neet to create a <code>autocomplete</code> function in your controller:
+</p>
+
+<pre>import Ember from 'ember';
+
+export default Ember.Controller.extend({
+  autocomplete(cm) {
+    //let currentWord = cm.getTokenAt(cm.getCursor()).string);
+    return {list: ['home', 'help']};
+  }
+});</pre>
