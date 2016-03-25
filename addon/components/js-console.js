@@ -363,9 +363,11 @@ export default Ember.Component.extend({
 
     function autocomplete_function(cm) {
       if (custom_autocomplete) {
-        return custom_autocomplete(cm);
+        return custom_autocomplete(cm) || {from: cm.getCursor(), to: cm.getCursor(), list: []};
       } else {
-        return CodeMirror.hint.javascript(cm) || {from: cm.getCursor(), to: cm.getCursor(), list: []};
+        var a = CodeMirror.hint.javascript(cm) || {from: cm.getCursor(), to: cm.getCursor(), list: []};
+        console.log(a);
+        return a;
       }
     }
 
